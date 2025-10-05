@@ -80,6 +80,40 @@ const Gallery: React.FC = () => {
           </div>
         </div>
       )}
+
+      {/* DODATNE SEKCIJE */}
+      <div className={styles.extraSections}>
+        <div className={styles.infoSection}>
+          <img src={img4} alt="Hrana" />
+          <div className={styles.infoText}>
+            <h3>Naši Ukusni Obroci</h3>
+            <p>
+              Iskusite savršen ukus naših sveže pripremljenih jela napravljenih od najboljih sastojaka. 
+              Svaki zalogaj je kreiran da očara vaša čula.
+            </p>
+          </div>
+        </div>
+
+        <div className={`${styles.infoSection} ${styles.reverse}`}>
+          <img src={img5} alt="Pića" />
+          <div className={styles.infoText}>
+            <h3>Osvežavajuća Pića</h3>
+            <p>
+              Od klasičnih gaziranih pića do ručno pravljenih piva, naša pića su savršen dodatak vašem obroku — osvežavajuća, hladna i puna ukusa.
+            </p>
+          </div>
+        </div>
+
+        <div className={styles.infoSection}>
+          <img src={img6} alt="Deserti" />
+          <div className={styles.infoText}>
+            <h3>Slatki Deserti</h3>
+            <p>
+              Završite obrok na slatki način uz naše nebeske deserte. Kolači, peciva i poslastice koje donose osmeh u svakom zalogaju.
+            </p>
+          </div>
+        </div>
+      </div>
       </section>
   );
 };
