@@ -24,7 +24,7 @@ const Contact: React.FC = () => {
     setSubmittedData({ email, message, gender });
   };
 
-  
+
   return (
     <div className={styles.background}>
       <div className={styles.contactContainer}>
