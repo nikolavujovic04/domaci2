@@ -43,5 +43,27 @@ const Footer: React.FC = () => {
       ],
     },
   ];
-  
-}
+  return (
+    <footer className={styles.footer}>
+      <div className={styles.sections}>
+        {sections.map((sec) => (
+          <div key={sec.title} className={styles.section}>
+            <h4>{sec.title}</h4>
+            <ul>
+              {sec.links.map((link) => (
+                <li key={link.path}>
+                  <NavLink to={link.path}>{link.name}</NavLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <div className={styles.copyright}>
+        &copy; {new Date().getFullYear()} FoodSpot. Sva prava zadržana.
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
