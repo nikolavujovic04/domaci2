@@ -1,0 +1,146 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff8ef;
+  border-bottom: 1px solid #f2c27b;
+  padding: 0.6rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+
+    .iconCircle {
+      width: 34px;
+      height: 34px;
+      background-color: #ffa726;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 1.2rem;
+    }
+
+    .brandText {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #f57c00;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  .linksContainer {
+    display: flex;
+    align-items: center;
+
+    ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        margin: 0 0.8rem;
+
+        a {
+          color: #5d4037;
+          text-decoration: none;
+          font-weight: 500;
+          transition: color 0.25s;
+
+          &:hover {
+            color: #f57c00;
+          }
+        }
+      }
+    }
+
+    .active {
+      font-weight: 700;
+      border-bottom: 2px solid #f57c00;
+      color: #f57c00;
+    }
+
+    .loginButton {
+      background: none;
+      border: 2px solid #f57c00;
+      color: #f57c00;
+      border-radius: 25px;
+      padding: 0.3rem 1rem;
+      margin-left: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: #f57c00;
+        color: white;
+      }
+    }
+  }
+
+  .menuToggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+
+    span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background-color: #f57c00;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    .linksContainer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 80%;
+      height: 100vh;
+      background: #fff8ef;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+
+      ul {
+        flex-direction: column;
+
+        li {
+          margin: 0.8rem 0;
+        }
+      }
+
+      .loginButton {
+        margin-top: 1.5rem;
+      }
+    }
+
+    .showMenu {
+      transform: translateX(0);
+      box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .menuToggle {
+      display: flex;
+    }
+  }
+}
