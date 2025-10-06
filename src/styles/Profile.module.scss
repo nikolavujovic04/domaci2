@@ -1,0 +1,61 @@
+.container {
+  max-width: 500px;
+  margin: 3rem auto;
+  padding: 2rem;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.profileHeader {
+  margin-bottom: 2rem;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 2px solid #ddd;
+}
+
+.username {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.subtext {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.profileInfo {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.dataRow {
+  margin: 0.5rem 0;
+  font-size: 1.05rem;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.profileActions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.profileActions button {
+  width: 100%;
+}
+
+.logoutButton {
+  margin-top: 1.5rem;
+  background-color: #e74c3c !important;
+  color: white !important;
+}
