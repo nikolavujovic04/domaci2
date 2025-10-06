@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import ProductCard from "../components/ProductCard";
 import Button from "../components/Button";
 import { PRODUCTS, type Product } from "../models/ProductPag";
+import styles from "../styles/Shop.module.scss";
+
 const ITEMS_PER_PAGE = 6;
 
 const Shop: React.FC = () => {
@@ -38,6 +40,135 @@ const Shop: React.FC = () => {
     setSearchTerm(e.target.value);
     setCurrentPage(1);
   };
+  return (
+    <section className={styles.shop}>
+      <h2 className={styles.title}>Naši proizvodi</h2>
+
+      <input
+        type="text"
+        placeholder="Pretraži proizvode..."
+        value={searchTerm}
+        onChange={handleSearchChange}
+        className={styles.searchInput}
+      />
+
+      {/* Filteri */}
+      <div className={styles.filters}>
+        {/* Kategorije */}
+        <div className={styles.filterColumn}>
+          <span>Kategorija:</span>
+          <div className={styles.buttonRow}>
+            {[
+              { label: "Sve", value: "All" },
+              { label: "Brza hrana", value: "Brza hrana" },
+              { label: "Pica", value: "Pica" },
+              { label: "Deserti", value: "Deserti" },
+            ].map((cat) => (
+              <Button
+                key={cat.value}
+                text={cat.label}
+                onClick={() => {
+                  setCategoryFilter(cat.value);
+                  setCurrentPage(1);
+                }}
+                className={categoryFilter === cat.value ? styles.activeFilter : ""}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Cena */}
+        <div className={styles.filterColumn}>
+          <span>Cena:</span>
+          <div className={styles.buttonRow}>
+            {[
+              { label: "Sve", value: "All" },
+              { label: "<5", value: "<5" },
+              { label: "5-10", value: "5-10" },
+              { label: ">10", value: ">10" },
+            ].map((price) => (
+              <Button
+                key={price.value}
+                text={price.label}
+                onClick={() => {
+                  setPriceFilter(price.value);
+                  setCurrentPage(1);
+                }}
+                className={priceFilter === price.value ? styles.activeFilter : ""}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Ocena */}
+        <div className={styles.filterColumn}>
+          <span>Ocena:</span>
+          <div className={styles.buttonRow}>
+            {[
+              { label: "Sve", value: "All" },
+              { label: "5+", value: "5" },
+              { label: "4+", value: "4" },
+            ].map((rating) => (
+              <Button
+                key={rating.value}
+                text={rating.label}
+                onClick={() => {
+                  setRatingFilter(rating.value);
+                  setCurrentPage(1);
+                }}
+                className={ratingFilter === rating.value ? styles.activeFilter : ""}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Grid proizvoda */}
+      <div className={styles.grid}>
+        {currentProducts.length > 0 ? (
+          currentProducts.map((product: Product) => (
+            <ProductCard
+              key={product.id}
+              image={product.image}
+              title={product.title}
+              price={product.price}
+              rating={product.rating}
+              buttonText="Poruči"
+              onOrder={() => console.log(`Poručujem ${product.title}`)}
+            />
+          ))
+        ) : (
+          <p>Nema proizvoda.</p>
+        )}
+      </div>
+
+      {/* Paginacija */}
+      {totalPages > 1 && (
+        <div className={styles.pagination}>
+          <Button
+            text="◀ Prethodna"
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+          />
+
+          {[...Array(totalPages)].map((_, idx) => (
+            <Button
+              key={idx}
+              text={`${idx + 1}`}
+              onClick={() => handlePageChange(idx + 1)}
+              className={currentPage === idx + 1 ? styles.activePage : ""}
+            />
+          ))}
+
+          <Button
+            text="Sledeća ▶"
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+          />
+        </div>
+      )}
+    </section>
+  );
 };
 
 export default Shop;
