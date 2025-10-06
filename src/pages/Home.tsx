@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import Product from "../models/Product";
 import burger from "../assets/burger.jpg";
 import pancake from "../assets/palacinka.jpg";
+import background from "../assets/background.jpg";
+import ProductCard from "../components/ProductCard";
+import styles from "../styles/Home.module.scss";
+import Button from "../components/Button";
 
 // Kreiramo instance proizvoda
 const CATEGORY_DATA = [
@@ -18,3 +22,65 @@ const IMAGE_MAP: { [key: string]: string } = {
   "Deserti": burger,
 };
 
+const Home: React.FC = () => {
+  return (
+    <main className={styles.home}>
+      {/* Hero Sekcija */}
+      <section className={styles.hero}>
+        <div className={styles.heroOverlay} />
+        <img
+          src={background}
+          alt="Pozadina Foodie"
+          className={styles.heroBgImage}
+        />
+        <div className={styles.heroContent}>
+          <h1>Dobrodošli u Foodie</h1>
+          <p>Ukusni obroci, pića i deserti na dohvat ruke</p>
+          <Link to="/shop">
+            <Button text="Istraži Jelovnik" />
+          </Link>
+        </div>
+      </section>
+
+      {/* Kategorije */}
+      <section className={styles.categories}>
+        <div className={styles.productGrid}>
+          {CATEGORY_DATA.map((product, index) => (
+            <ProductCard
+              key={index}
+              image={IMAGE_MAP[product.title]}
+              title={product.title}
+              price={product.price}          
+              rating={product.rating}       
+              buttonText="Poruči"
+              onOrder={() => {}}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* O nama */}
+      <section className={styles.about}>
+        <p>
+          Foodie je vaše omiljeno mesto za sočne obroke i osvežavajuća pića. 
+          Donosimo ukus, svežinu i kvalitet pravo na vaš sto — bez čekanja. 
+          Od sočnih burgera i hrskavih pomfrita do laganih deserata i 
+          specijalnih pića, svaki zalogaj je kreiran da zadovolji vašu želju. 
+          Poručite sada i uživajte u ukusu brzih, svežih i ukusnih obroka!
+        </p>
+      </section>
+
+      {/* Slika baner */}
+      <section className={styles.imageBanner}>
+        <img
+          src={burger}
+          alt="Ukusna Hrana"
+          className={styles.bannerImage}
+        />
+      </section>
+      
+    </main>
+  );
+};
+
+export default Home;
