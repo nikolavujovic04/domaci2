@@ -7,6 +7,7 @@ import './App.css'
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
+import Shop from "./pages/Shop";
 
 function App(){
   return (
@@ -14,6 +15,7 @@ function App(){
     <Navbar/>
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/shop" element={<Shop />} />
       <Route path="/gallery" element={<Gallery />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/login" element={<Login />} />
