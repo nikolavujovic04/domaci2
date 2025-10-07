@@ -1,4 +1,6 @@
-export default class Product {
+import type { IProduct } from "./IProduct";
+
+export default class Product implements IProduct {
   title: string;
   price: number;
   rating: number;

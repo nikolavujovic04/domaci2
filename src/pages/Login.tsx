@@ -20,15 +20,11 @@ const Login: React.FC = () => {
       setError("Email i lozinka ne smeju biti prazni.");
       return;
     }
-
-    // Kreiramo instancu User klase
     const user = new User(email, password);
 
-    // Primer korišćenja metoda klase
     console.log("Masked password:", user.getMaskedPassword());
     console.log("Email domain:", user.getEmailDomain());
 
-    // Prosleđujemo User objekat login funkciji
     login(user.email, user.password);
 
     navigate("/profile");

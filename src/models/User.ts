@@ -1,4 +1,6 @@
-export default class User {
+import type { IUser } from "./IUser";
+
+export default class User implements IUser {
   email: string;
   password: string;
 
