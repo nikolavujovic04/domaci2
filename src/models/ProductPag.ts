@@ -22,12 +22,12 @@ const productTitles = [
   "Burger",
   "Palacinke",
   "Pica",
-  "Palacinke",
+  "Spagete",
   "Torta",
   "Pivo",
   "Gazirani sokovi",
   "Jaja",
-  "Koka kola",
+  "Coca cola",
   "Voda",
 ];
 

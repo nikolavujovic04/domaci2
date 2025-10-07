@@ -5,22 +5,23 @@ import Button from "./Button";
 interface ProductCardProps {
   image: string;
   title: string;
-  price: number;
-  rating: number;
+  price?: number;
+  rating?: number;
+  priceText?: string;
+  ratingStars?: string;
   buttonText?: string;
   onOrder?: () => void;
 }
 
+
 const ProductCard: React.FC<ProductCardProps> = ({
   image,
   title,
-  price,
-  rating,
+  priceText,
+  ratingStars,
   buttonText = "Poruči",
   onOrder,
 }) => {
-  const validRating = Math.min(Math.max(rating, 0), 5);
-
   return (
     <div className={styles.productCard}>
       <div className={styles.imgContainer}>
@@ -34,18 +35,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
         variant="primary"
       />
       <div className={styles.cardFooter}>
-        <div className={styles.rating}>
-          {[...Array(5)].map((_, i) => (
-            <span
-              key={i}
-              className={i < validRating ? styles.starFilled : styles.starEmpty}
-              aria-label={i < validRating ? "popunjena zvezda" : "prazna zvezda"}
-            >
-              {i < validRating ? "★" : "☆"}
-            </span>
-          ))}
-        </div>
-        <div className={styles.price}>{price.toFixed(2)} €</div>
+        <div className={styles.rating}>{ratingStars}</div>
+        <div className={styles.price}>{priceText}</div>
       </div>
     </div>
   );

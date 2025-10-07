@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import ProductCard from "../components/ProductCard";
 import Button from "../components/Button";
-import { PRODUCTS as PRODUCT_DATA, type Product as IProductData } from "../models/ProductPag";
+import {
+  PRODUCTS as PRODUCT_DATA,
+  type Product as IProductData,
+} from "../models/ProductPag";
 import Product from "../models/Product"; // klasa sa metodama
 import styles from "../styles/Shop.module.scss";
 
@@ -23,14 +26,14 @@ const Shop: React.FC = () => {
 
   // Kreiramo instance klase Product iz običnih objekata
   const products: Product[] = PRODUCT_DATA.map(
-    p => new Product(p.title, p.price, p.rating)
+    (p) => new Product(p.title, p.price, p.rating)
   );
 
-  const filteredProducts = products.filter((product) => {
-    const matchesSearch = product.title.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = categoryFilter === "All" || product.title === categoryFilter;
-    const matchesPrice = checkPrice(product.price);
-    const matchesRating = ratingFilter === "All" || product.rating >= Number(ratingFilter);
+  const filteredProducts = PRODUCT_DATA.filter((p) => {
+    const matchesSearch = p.title.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory = categoryFilter === "All" || p.category === categoryFilter;
+    const matchesPrice = checkPrice(p.price);
+    const matchesRating = ratingFilter === "All" || p.rating >= Number(ratingFilter);
     return matchesSearch && matchesCategory && matchesPrice && matchesRating;
   });
 
@@ -133,21 +136,20 @@ const Shop: React.FC = () => {
       {/* Grid proizvoda */}
       <div className={styles.grid}>
         {currentProducts.length > 0 ? (
-          currentProducts.map((product, idx) => (
-            <div key={idx}>
+          currentProducts.map((p, idx) => {
+            const product = new Product(p.title, p.price, p.rating);
+            return (
               <ProductCard
-                image={PRODUCT_DATA[idx % PRODUCT_DATA.length].image} // slika
+                key={p.id}
+                image={p.image}
                 title={product.title}
-                price={product.price}   // BROJ
-                rating={product.rating} // BROJ
+                priceText={product.getFormattedPrice()}
+                ratingStars={product.getRatingStars()}
                 buttonText="Poruči"
                 onOrder={() => console.log(`Poručujem ${product.title}`)}
               />
-              {/* Ovde koristimo metode klase za formatiran prikaz */}
-              <p>Cena: {product.getFormattedPrice()}</p>
-              <p>Ocena: {product.getRatingStars()}</p>
-            </div>
-          ))
+            );
+          })
         ) : (
           <p>Nema proizvoda.</p>
         )}

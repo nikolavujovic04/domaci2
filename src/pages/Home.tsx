@@ -4,28 +4,29 @@ import Product from "../models/Product";
 import burger from "../assets/burger.jpg";
 import pancake from "../assets/palacinka.jpg";
 import background from "../assets/background.jpg";
+import cola from "../assets/cola.jpg";
 import ProductCard from "../components/ProductCard";
 import styles from "../styles/Home.module.scss";
 import Button from "../components/Button";
 
-// Kreiramo instance proizvoda
+// Kreiramo instance proizvoda koristeći klasu Product
 const CATEGORY_DATA = [
   new Product("Brza Hrana", 5, 4),
   new Product("Pića", 10, 5),
   new Product("Deserti", 7, 4),
 ];
 
-// Za slike čuvamo mapu prema title-u
+// Mapa slika po kategorijama
 const IMAGE_MAP: { [key: string]: string } = {
   "Brza Hrana": burger,
-  "Pića": pancake,
-  "Deserti": burger,
+  "Pića": cola,
+  "Deserti": pancake,
 };
 
 const Home: React.FC = () => {
   return (
     <main className={styles.home}>
-      {/* Hero Sekcija */}
+      {/* Hero sekcija */}
       <section className={styles.hero}>
         <div className={styles.heroOverlay} />
         <img
@@ -50,8 +51,8 @@ const Home: React.FC = () => {
               key={index}
               image={IMAGE_MAP[product.title]}
               title={product.title}
-              price={product.price}          
-              rating={product.rating}       
+              priceText={product.getFormattedPrice()}
+              ratingStars={product.getRatingStars()}
               buttonText="Poruči"
               onOrder={() => {}}
             />
@@ -78,7 +79,6 @@ const Home: React.FC = () => {
           className={styles.bannerImage}
         />
       </section>
-      
     </main>
   );
 };
