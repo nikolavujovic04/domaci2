@@ -8,6 +8,7 @@ import cola from "../assets/cola.jpg";
 import ProductCard from "../components/ProductCard";
 import styles from "../styles/Home.module.scss";
 import Button from "../components/Button";
+import WorkSection from "../components/WorkSection";
 
 // Kreiramo instance proizvoda koristeći klasu Product
 const CATEGORY_DATA = [
@@ -79,6 +80,7 @@ const Home: React.FC = () => {
           className={styles.bannerImage}
         />
       </section>
+      <WorkSection/>
     </main>
   );
 };
