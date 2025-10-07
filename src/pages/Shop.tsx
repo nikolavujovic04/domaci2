@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import ProductCard from "../components/ProductCard";
 import Button from "../components/Button";
-import { PRODUCTS, type Product } from "../models/ProductPag";
+import { PRODUCTS as PRODUCT_DATA, type Product as IProductData } from "../models/ProductPag";
+import Product from "../models/Product"; // klasa sa metodama
 import styles from "../styles/Shop.module.scss";
 
 const ITEMS_PER_PAGE = 6;
@@ -20,9 +21,14 @@ const Shop: React.FC = () => {
     return true;
   };
 
-  const filteredProducts = PRODUCTS.filter((product) => {
+  // Kreiramo instance klase Product iz običnih objekata
+  const products: Product[] = PRODUCT_DATA.map(
+    p => new Product(p.title, p.price, p.rating)
+  );
+
+  const filteredProducts = products.filter((product) => {
     const matchesSearch = product.title.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = categoryFilter === "All" || product.category === categoryFilter;
+    const matchesCategory = categoryFilter === "All" || product.title === categoryFilter;
     const matchesPrice = checkPrice(product.price);
     const matchesRating = ratingFilter === "All" || product.rating >= Number(ratingFilter);
     return matchesSearch && matchesCategory && matchesPrice && matchesRating;
@@ -40,6 +46,7 @@ const Shop: React.FC = () => {
     setSearchTerm(e.target.value);
     setCurrentPage(1);
   };
+
   return (
     <section className={styles.shop}>
       <h2 className={styles.title}>Naši proizvodi</h2>
@@ -126,16 +133,20 @@ const Shop: React.FC = () => {
       {/* Grid proizvoda */}
       <div className={styles.grid}>
         {currentProducts.length > 0 ? (
-          currentProducts.map((product: Product) => (
-            <ProductCard
-              key={product.id}
-              image={product.image}
-              title={product.title}
-              price={product.price}
-              rating={product.rating}
-              buttonText="Poruči"
-              onOrder={() => console.log(`Poručujem ${product.title}`)}
-            />
+          currentProducts.map((product, idx) => (
+            <div key={idx}>
+              <ProductCard
+                image={PRODUCT_DATA[idx % PRODUCT_DATA.length].image} // slika
+                title={product.title}
+                price={product.price}   // BROJ
+                rating={product.rating} // BROJ
+                buttonText="Poruči"
+                onOrder={() => console.log(`Poručujem ${product.title}`)}
+              />
+              {/* Ovde koristimo metode klase za formatiran prikaz */}
+              <p>Cena: {product.getFormattedPrice()}</p>
+              <p>Ocena: {product.getRatingStars()}</p>
+            </div>
           ))
         ) : (
           <p>Nema proizvoda.</p>
@@ -150,7 +161,6 @@ const Shop: React.FC = () => {
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
           />
-
           {[...Array(totalPages)].map((_, idx) => (
             <Button
               key={idx}
@@ -159,7 +169,6 @@ const Shop: React.FC = () => {
               className={currentPage === idx + 1 ? styles.activePage : ""}
             />
           ))}
-
           <Button
             text="Sledeća ▶"
             onClick={() => handlePageChange(currentPage + 1)}
