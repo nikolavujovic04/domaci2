@@ -3,6 +3,7 @@ import { useAuth } from "../components/context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import styles from "../styles/Login.module.scss";
+import User from "../models/User"; // import klase User
 
 const Login: React.FC = () => {
   const { login } = useAuth();
@@ -14,11 +15,22 @@ const Login: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
     if (!email.trim() || !password.trim()) {
       setError("Email i lozinka ne smeju biti prazni.");
       return;
     }
-    login(email, password);
+
+    // Kreiramo instancu User klase
+    const user = new User(email, password);
+
+    // Primer korišćenja metoda klase
+    console.log("Masked password:", user.getMaskedPassword());
+    console.log("Email domain:", user.getEmailDomain());
+
+    // Prosleđujemo User objekat login funkciji
+    login(user.email, user.password);
+
     navigate("/profile");
   };
 
