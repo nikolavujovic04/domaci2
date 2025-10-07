@@ -9,6 +9,7 @@ import ProductCard from "../components/ProductCard";
 import styles from "../styles/Home.module.scss";
 import Button from "../components/Button";
 import WorkSection from "../components/WorkSection";
+import TeamSection from "../components/TeamSection";
 
 // Kreiramo instance proizvoda koristeći klasu Product
 const CATEGORY_DATA = [
@@ -36,7 +37,7 @@ const Home: React.FC = () => {
           className={styles.heroBgImage}
         />
         <div className={styles.heroContent}>
-          <h1>Dobrodošli u Foodie</h1>
+          <h1>Dobrodošli u FoodSpot</h1>
           <p>Ukusni obroci, pića i deserti na dohvat ruke</p>
           <Link to="/shop">
             <Button text="Istraži Jelovnik" />
@@ -64,7 +65,7 @@ const Home: React.FC = () => {
       {/* O nama */}
       <section className={styles.about}>
         <p>
-          Foodie je vaše omiljeno mesto za sočne obroke i osvežavajuća pića. 
+          FoodSpot je vaše omiljeno mesto za sočne obroke i osvežavajuća pića. 
           Donosimo ukus, svežinu i kvalitet pravo na vaš sto — bez čekanja. 
           Od sočnih burgera i hrskavih pomfrita do laganih deserata i 
           specijalnih pića, svaki zalogaj je kreiran da zadovolji vašu želju. 
@@ -81,6 +82,7 @@ const Home: React.FC = () => {
         />
       </section>
       <WorkSection/>
+      <TeamSection/>
     </main>
   );
 };
