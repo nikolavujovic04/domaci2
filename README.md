@@ -1,73 +1,42 @@
-# React + TypeScript + Vite
+# FoodSpot – Klijentska web aplikacija u React-u 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Opis projekta
+FoodSpot predstavlja jednostavnu web aplikaciju za prikaz hrane, pića i dodatne opreme. Korisnici mogu da pregledaju proizvode, filtriraju ih po kategoriji, ceni i oceni, razgledaju galeriju, kontaktiraju sajt, prijave se i pristupi svom profilu. Aplikacija je napravljena u React-u sa TypeScript-om, a stilizovana je pomoću SCSS-a.
 
-Currently, two official plugins are available:
+## Tehnologije i biblioteke
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+React – frontend framework za pravljenje komponentne aplikacije
+TypeScript – donosi statičko tipiziranje i jasniju kontrolu nad kodom
+SCSS – za naprednu i modularnu stilizaciju komponenti
+React Router – rutiranje i navigacija između stranica
+clsx – jednostavno kombinovanje CSS klasa
+Context API – upravljanje globalnim stanjem autentifikacije korisnika
 
-## React Compiler
+## Funkcianolnosti
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Pregled proizvoda sa slikama, cenom i ocenom.
+Filtriranje i pretraga proizvoda po kategoriji, ceni i oceni.
+Galerija i kontakt forma sa validacijom unosa.
+Prijava i odjava korisnika sa osnovnom autentifikacijom (simulirano).
+Navigacija kroz stranice pomoću Navbar-a i Footer-a.
+Paginacija proizvoda u prodavnici.
 
-## Expanding the ESLint configuration
+## Pokretanje projekta na lokalnoj mašini
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Otvorite Visual Studio Code ili bilo koji drugi editor po izboru. 
+Otvorite terminal u editoru.  
+Povucite repozitorijum sa GitHub-a:
+git init
+git pull link-do-github-ripozitorijuma
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Struktura projekta
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+src/components – svi elementi koji se koriste više puta (Navbar, Footer, Button, ProductCard i ostalo)
+src/pages – stranice aplikacije (Home, Shop, Gallery, Contact, Login, Profile)
+src/models – klase i interfejsi (Product, User, IProduct, IUser)
+src/styles – SCSS fajlovi za stilizaciju
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Autor
+Nikola Vujović
+Magdalena Grgić
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
