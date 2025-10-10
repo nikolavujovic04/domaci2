@@ -14,7 +14,9 @@ const Profile: React.FC = () => {
     }
   }, [user, navigate]);
 
-  if (!user) return null;
+  if (!user){ 
+    return null;
+  }
 
   const userEmail = user.email;
 

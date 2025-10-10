@@ -1,7 +1,7 @@
 // src/components/WorkSection.tsx
 import React from 'react';
 import styles from '../styles/Worksection.module.scss';
-import WorkCard from './Workcard';
+import WorkCard from './WorkCard';
 import img1 from '../assets/burger.jpg';
 import img2 from '../assets/jaja.jpg';
 import img3 from '../assets/palacinka.jpg';

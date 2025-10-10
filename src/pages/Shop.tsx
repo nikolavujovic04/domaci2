@@ -73,15 +73,15 @@ const Shop: React.FC = () => {
               { label: "Brza hrana", value: "Brza hrana" },
               { label: "Pica", value: "Pica" },
               { label: "Deserti", value: "Deserti" },
-            ].map((cat) => (
+            ].map((nbr) => (
               <Button
-                key={cat.value}
-                text={cat.label}
+                key={nbr.value}
+                text={nbr.label}
                 onClick={() => {
-                  setCategoryFilter(cat.value);
+                  setCategoryFilter(nbr.value);
                   setCurrentPage(1);
                 }}
-                className={categoryFilter === cat.value ? styles.activeFilter : ""}
+                className={categoryFilter === nbr.value ? styles.activeFilter : ""}
               />
             ))}
           </div>
@@ -118,6 +118,8 @@ const Shop: React.FC = () => {
               { label: "Sve", value: "All" },
               { label: "5+", value: "5" },
               { label: "4+", value: "4" },
+              { label: "3+", value: "3" },
+              { label: "2+", value: "2" },
             ].map((rating) => (
               <Button
                 key={rating.value}

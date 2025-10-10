@@ -1,4 +1,3 @@
-// src/components/TeamSection.tsx
 import React from 'react';
 import styles from '../styles/TeamSection.module.scss';
 import TeamMember from './TeamMember';
