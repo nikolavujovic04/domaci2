@@ -138,7 +138,7 @@ const Shop: React.FC = () => {
       {/* Grid proizvoda */}
       <div className={styles.grid}>
         {currentProducts.length > 0 ? (
-          currentProducts.map((p, idx) => {
+          currentProducts.map((p) => {
             const product = new Product(p.title, p.price, p.rating);
             return (
               <ProductCard
