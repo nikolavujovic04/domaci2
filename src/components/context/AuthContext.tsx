@@ -17,6 +17,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const newUser = new User(email, password);
     setUser(newUser);
   };
+  //komentar
 
   const logout = () => {
     setUser(null);
