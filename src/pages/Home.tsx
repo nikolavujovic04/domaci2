@@ -30,7 +30,6 @@ const Home: React.FC = () => {
     <main className={styles.home}>
       {/* Hero sekcija */}
       <section className={styles.hero}>
-        <div className={styles.heroOverlay} />
         <img
           src={background}
           alt="Pozadina Foodie"

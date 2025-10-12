@@ -25,10 +25,6 @@ const Shop: React.FC = () => {
   };
 
   // Kreiramo instance klase Product iz običnih objekata
-  const products: Product[] = PRODUCT_DATA.map(
-    (p) => new Product(p.title, p.price, p.rating)
-  );
-
   const filteredProducts = PRODUCT_DATA.filter((p) => {
     const matchesSearch = p.title.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = categoryFilter === "All" || p.category === categoryFilter;

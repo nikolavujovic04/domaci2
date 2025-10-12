@@ -77,26 +77,26 @@ const productImages = [
 ];
 
 const categories: ("Brza hrana" | "Pica" | "Deserti")[] = [
-  "Brza hrana",   // Burger
-  "Deserti",      // Palacinke
-  "Brza hrana",   // Pica
-  "Brza hrana",   // Spagete
-  "Deserti",      // Torta
-  "Pica",         // Pivo
-  "Pica",         // Gazirani sokovi
-  "Brza hrana",   // Jaja
-  "Pica",         // Coca cola
-  "Pica",         // Voda
-  "Deserti",      // Cokoladni kolac
-  "Pica",         // Koktel
-  "Brza hrana",   // Makarone
-  "Brza hrana",   // Nudle
-  "Pica",         // Vino
-  "Brza hrana",   // Pomfrit
-  "Brza hrana",   // Pohovani kackavalj
-  "Deserti",      // Vocna torta
-  "Deserti",      // Kolacici
-  "Deserti"       // Mafini
+  "Brza hrana",   
+  "Deserti",      
+  "Brza hrana",  
+  "Brza hrana",   
+  "Deserti",      
+  "Pica",       
+  "Pica",        
+  "Brza hrana",  
+  "Pica",        
+  "Pica",         
+  "Deserti",     
+  "Pica",         
+  "Brza hrana",  
+  "Brza hrana",  
+  "Pica",         
+  "Brza hrana",  
+  "Brza hrana",  
+  "Deserti",     
+  "Deserti",      
+  "Deserti"     
 ];
 
 // Kreiranje proizvoda — kombinujemo title i image po indeksu
